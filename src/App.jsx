@@ -1,10 +1,16 @@
-console.log('app.js is running');
+console.log('App.jsx is running');
+
+// Challenge Code
+let app = {
+  title: 'Indecision App',
+  subTitle: 'This is a trivial app'
+}
 
 // Babel Compiled Code
 const template = (
   <div>
-    <h1>Indecision App</h1>
-    <p>Some info</p>
+    <h1>{app.title}</h1>
+    <p>{app.subTitle}</p>
     <ol>
       <li>Item 1</li>
       <li>Item 2</li>
@@ -12,15 +18,19 @@ const template = (
   </div>
 );
 
-// Challenge Code
+let user = {
+  name : 'Steve $$',
+  age : 32,
+  location : 'New York'
+}
 const templateTwo = (
   <div>
-    <h1>Steve $$</h1>
-    <p>Age: 32</p>
-    <p>Location: NYC</p>
+    <h1>{user.name.toUpperCase()}</h1>
+    <p>Age: {user.age}</p>
+    <p>Location: {user.location}</p>
   </div>
 );
 
 const appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);

@@ -1,20 +1,25 @@
 'use strict';
 
-console.log('app.js is running');
+console.log('App.jsx is running');
 
-// Babel Compiled Code
-var template = React.createElement(
+// Challenge Code
+var app = {
+  title: 'Indecision App',
+  subTitle: 'This is a trivial app'
+
+  // Babel Compiled Code
+};var template = React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    'Indecision App'
+    app.title
   ),
   React.createElement(
     'p',
     null,
-    'Some info'
+    app.subTitle
   ),
   React.createElement(
     'ol',
@@ -32,27 +37,33 @@ var template = React.createElement(
   )
 );
 
-// Challenge Code
+var user = {
+  name: 'Steve $$',
+  age: 32,
+  location: 'New York'
+};
 var templateTwo = React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    'Steve $$'
+    user.name.toUpperCase()
   ),
   React.createElement(
     'p',
     null,
-    'Age: 32'
+    'Age: ',
+    user.age
   ),
   React.createElement(
     'p',
     null,
-    'Location: NYC'
+    'Location: ',
+    user.location
   )
 );
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
