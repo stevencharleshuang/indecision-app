@@ -7,7 +7,7 @@ var appRoot = document.getElementById('app');
 var app = {
   title: 'Indecision App',
   subTitle: 'This is a trivial app',
-  options: []
+  options: ['op1', 'op2', 'op3']
 };
 
 var onRemoveAll = function onRemoveAll() {
@@ -57,16 +57,13 @@ var renderApp = function renderApp() {
     React.createElement(
       'ol',
       null,
-      React.createElement(
-        'li',
-        null,
-        'Item 1'
-      ),
-      React.createElement(
-        'li',
-        null,
-        'Item 2'
-      )
+      app.options.map(function (option, i) {
+        return React.createElement(
+          'li',
+          { key: i },
+          option
+        );
+      })
     ),
     React.createElement(
       'form',
