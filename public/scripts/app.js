@@ -5,7 +5,8 @@ console.log('App.jsx is running');
 // Challenge Code
 var app = {
   title: 'Indecision App',
-  subTitle: 'This is a trivial app'
+  subTitle: 'This is a trivial app',
+  options: ['One', 'Two']
 
   // Babel Compiled Code
 };var template = React.createElement(
@@ -19,8 +20,9 @@ var app = {
   React.createElement(
     'p',
     null,
-    app.subTitle
+    app.subTitle && app.subTitle
   ),
+  app.options.length > 0 ? 'Here are your options' : 'No options',
   React.createElement(
     'ol',
     null,
@@ -42,26 +44,33 @@ var user = {
   age: 32,
   location: 'New York'
 };
+
+function getLocation(location) {
+  if (location) {
+    return React.createElement(
+      'p',
+      null,
+      'Location: ',
+      location
+    );
+  }
+}
+
 var templateTwo = React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    user.name.toUpperCase()
+    user.name ? user.name.toUpperCase() : 'Anonymous'
   ),
-  React.createElement(
+  user.age >= 18 && React.createElement(
     'p',
     null,
     'Age: ',
     user.age
   ),
-  React.createElement(
-    'p',
-    null,
-    'Location: ',
-    user.location
-  )
+  getLocation(user.location)
 );
 
 var appRoot = document.getElementById('app');
