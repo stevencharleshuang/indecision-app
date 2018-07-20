@@ -7,12 +7,19 @@ var appRoot = document.getElementById('app');
 var app = {
   title: 'Indecision App',
   subTitle: 'This is a trivial app',
-  options: ['op1', 'op2', 'op3']
+  // options: ['op1', 'op2', 'op3'],
+  options: []
 };
 
 var onRemoveAll = function onRemoveAll() {
   app.options = [];
   renderApp();
+};
+
+var onMakeDecision = function onMakeDecision() {
+  var randomNum = Math.floor(Math.random() * app.options.length);
+  var randomOption = app.options[randomNum];
+  alert(randomOption);
 };
 
 var onFormSubmit = function onFormSubmit(e) {
@@ -24,7 +31,7 @@ var onFormSubmit = function onFormSubmit(e) {
     app.options.push(option);
     e.target.elements.option.value = '';
     renderApp();
-  }
+  };
 };
 
 // Babel Compiled Code
@@ -43,11 +50,15 @@ var renderApp = function renderApp() {
       null,
       app.subTitle && app.subTitle
     ),
-    app.options.length > 0 ? 'Here are your options' : 'No options',
     React.createElement(
       'p',
       null,
-      app.options.length
+      app.options.length > 0 ? 'Here are your options' : 'No options'
+    ),
+    React.createElement(
+      'button',
+      { disabled: app.options.length === 0, onClick: onMakeDecision },
+      'What Should I Do?'
     ),
     React.createElement(
       'button',
