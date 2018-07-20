@@ -45,16 +45,14 @@ var user = {
   location: 'New York'
 };
 
-function getLocation(location) {
-  if (location) {
-    return React.createElement(
-      'p',
-      null,
-      'Location: ',
-      location
-    );
-  }
-}
+var getLocation = function getLocation(location) {
+  return location ? React.createElement(
+    'p',
+    null,
+    'Location: ',
+    location
+  ) : undefined;
+};
 
 var templateTwo = React.createElement(
   'div',
@@ -75,4 +73,4 @@ var templateTwo = React.createElement(
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);

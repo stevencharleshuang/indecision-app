@@ -26,11 +26,7 @@ let user = {
   location : 'New York'
 }
 
-function getLocation (location) {
-  if (location) {
-    return <p>Location: {location}</p>;
-  }
-}
+const getLocation = (location) => location ? <p>Location: {location}</p> : undefined
 
 const templateTwo = (
   <div>
@@ -42,4 +38,4 @@ const templateTwo = (
 
 const appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);
