@@ -77,6 +77,11 @@ var renderApp = function renderApp() {
       })
     ),
     React.createElement(
+      'h1',
+      null,
+      'Server test'
+    ),
+    React.createElement(
       'form',
       { onSubmit: onFormSubmit },
       React.createElement('input', { type: 'text', name: 'option' }),

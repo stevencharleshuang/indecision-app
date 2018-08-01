@@ -49,6 +49,7 @@ const renderApp = () => {
           })
         }
       </ol>
+      <h1>Server test</h1>
       <form onSubmit={onFormSubmit}>
         <input type="text" name="option" />
         <button>Add Option</button>
