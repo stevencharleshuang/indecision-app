@@ -13,6 +13,7 @@ class IndecisionApp extends React.Component {
     };
     this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
     this.handlePick = this.handlePick.bind(this);
+    this.handleAddOption = this.handleAddOption.bind(this);
   }
 
   handleDeleteOptions() {
@@ -32,6 +33,20 @@ class IndecisionApp extends React.Component {
     alert(randomOption);
   }
 
+  handleAddOption(option) {
+    if (!option) {
+      return 'Enter valid value to add item';
+    } else if (this.state.options.indexOf(option) > -1) {
+      return 'This option already exists';
+    }
+
+    this.setState((prevState) => {
+      return {
+        options: prevState.options.concat([option])
+      }
+    });
+  }
+
   render() {
     const title = 'Indecision';
     const subtitle = 'Put your life in the hands of a computer';
@@ -49,7 +64,9 @@ class IndecisionApp extends React.Component {
           options={this.state.options}
           handleDeleteOptions={this.handleDeleteOptions}
         />
-        <AddOption />
+        <AddOption
+          handleAddOption={this.handleAddOption}
+        />
       </div>
     );
   }
@@ -96,21 +113,33 @@ class Options extends React.Component {
 }
 
 class AddOption extends React.Component {
-  handleAddOption (e) {
-    e.preventDefault();
-    const option = e.target.elements.option.value.trim();
-
-    if (option) {
-      alert(option);
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: undefined,
     }
+    this.localHandleAddOption = this.localHandleAddOption.bind(this)
+  }
+  localHandleAddOption (e) {
+    e.preventDefault();
+
+    const option = e.target.elements.option.value.trim();
+    const error = this.props.handleAddOption(option);
+
+    this.setState(() => {
+      return {
+        error: error,
+      };
+    });
   }
   render() {
     return (
       <div>
-        <form onSubmit={this.handleAddOption}>
+        <form onSubmit={this.localHandleAddOption}>
           <input type="text" name="option" />
           <button>Add Option</button>
         </form>
+        {this.state.error && <p>{this.state.error}</p>}
       </div>
     );
   }
