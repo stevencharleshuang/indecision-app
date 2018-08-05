@@ -14,7 +14,7 @@ export default class IndecisionApp extends React.Component {
     this.setState(() => ({
       options: [],
     }));
-  }
+  };
 
   handleDeleteOption = (optionToRemove) => {
     // console.log('handle delete option', option);
@@ -23,7 +23,7 @@ export default class IndecisionApp extends React.Component {
         return optionToRemove !== option;
       })
     }))
-  }
+  };
 
   handlePick = () => {
     let randomOption = this.state.options[
@@ -32,7 +32,7 @@ export default class IndecisionApp extends React.Component {
     )];
 
     alert(randomOption);
-  }
+  };
 
   handleAddOption = (option) => {
     // alert(`added ${option}`)
@@ -45,7 +45,7 @@ export default class IndecisionApp extends React.Component {
     this.setState((prevState) => ({
         options: prevState.options.concat([option])
     }));
-  }
+  };
 
   componentDidMount() {
     // localStorage.setItem('name', 'Andrew');
