@@ -2,6 +2,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AddOption from './components/AddOption';
+import Option from './components/Option';
+import Options from './components/Options';
+import Header from './components/Header';
+import Action from './components/Action';
+import User from './components/User';
 
 class IndecisionApp extends React.Component {
   constructor(props) {
@@ -114,82 +119,5 @@ class IndecisionApp extends React.Component {
     );
   }
 }
-
-const Header = (props) => {
-  return (
-    <div>
-      <h1>{props.title}</h1>
-      {props.subtitle && <h2>{props.subtitle}</h2>}
-    </div>
-  );
-};
-
-Header.defaultProps = {
-  title: 'Indecision'
-}
-
-const User = (props) => {
-  return (
-    <div>
-      <p>
-        Name: {props.name}
-      </p>
-      <p>
-        Age: {props.age}
-      </p>
-    </div>
-  );
-};
-
-const Action = (props) => {
-  return (
-    <div>
-      <button
-        onClick={props.handlePick}
-        disabled={!props.hasOptions}
-      >
-        What should I do?
-      </button>
-    </div>
-  );
-};
-
-
-const Options = (props) => {
-  // console.log('Options props: ', props);
-  return (
-    <div>
-      <button onClick={props.handleDeleteOptions}>Remove All</button>
-      {props.options.length === 0 && <p>Please add an option to get started</p>}
-      {
-        props.options.map((option, i) => (
-          <Option
-            key={ i }
-            optionText={ option }
-            handleDeleteOption={props.handleDeleteOption}
-          />
-        ))
-      }
-    </div>
-  );
-};
-
-
-
-
-const Option = (props) => {
-  // console.log('Option props: ', props)
-  return (
-    <div>
-      Option: {props.optionText}
-      <button
-        onClick={(e) => {
-          props.handleDeleteOption(props.optionText)
-        }}
-      > x </button>
-    </div>
-  );
-};
-
 
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
