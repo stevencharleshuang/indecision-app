@@ -1,9 +1,4 @@
 {
-  "dependencies": {
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "concurrently": "^3.6.1"
-  },
   "name": "indecision-app",
   "version": "1.0.0",
   "description": "An app for indecision",
@@ -12,6 +7,26 @@
   "author": "Steven Huang <steven.charles.huang@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "con": "concurrently \"live-server public\" \"babel src/App.jsx --out-file=public/scripts/app.js --presets=env,react --watch\""
+    "serve": "live-server public/",
+    "build-babel": "babel src/App.jsx --out-file=public/scripts/app.js --presets=env, react --watch",
+    "build": "webpack --config webpack.config.js --watch",
+    "dev": "concurrently \"live-server public/\" \"webpack --config webpack.config.js --watch\" "
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "concurrently": "^3.6.1",
+    "live-server": "^1.2.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-scripts": "^1.1.4",
+    "validator": "^10.5.0",
+    "webpack": "^4.16.4"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.1.0"
   }
 }
